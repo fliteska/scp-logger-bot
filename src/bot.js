@@ -33,7 +33,7 @@ client.on("message", async (msg) => {
     }
 
     msg.delete();
-    channel.send(`http://scpwiki.com/scp-${scp}`);
+    channel.send(`http://scpwiki.com/scp-${scpNum}`);
 });
 
 try {
