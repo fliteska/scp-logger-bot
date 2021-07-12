@@ -1,5 +1,4 @@
 const discord = require("discord.js");
-require("padleft");
 const client = new discord.Client();
 require("dotenv").config();
 
@@ -26,14 +25,13 @@ client.on("message", async (msg) => {
         return;
     }
 
+    msg.delete();
+    let scp = scpNum.toString();
     if (scpNum < 100) {
-        scpNum.toString().padLeft(3, "0");
-    } else {
-        scpNum.toString().padLeft(4, "0");
+        scp = scp.padStart(3, "0");
     }
 
-    msg.delete();
-    channel.send(`http://scpwiki.com/scp-${scpNum}`);
+    channel.send(`http://scpwiki.com/scp-${scp}`);
 });
 
 try {
