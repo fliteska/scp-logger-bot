@@ -1,21 +1,8 @@
 const discord = require("discord.js");
+require("padleft");
 const client = new discord.Client();
 require("dotenv").config();
-function scpRegexMatches(content) {
-    const regex = /SCP-\d{1,4}/gim;
-    let m;
-    const scpList = [];
 
-    while ((m = regex.exec(content)) !== null) {
-        if (m.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-        m.forEach((match, groupIndex) => {
-            scpList.push(match.toLowerCase());
-        });
-    }
-    return scpList;
-}
 client.on("ready", () => {
     console.log(`${client.user.tag} is up and running.`);
 });
@@ -24,13 +11,20 @@ client.on("message", async ({ channel, content, author }) => {
     if (author.username === "SCP Logger") {
         return;
     }
-    const scpMentions = scpRegexMatches(content);
-    if (scpMentions.length === 0) {
+
+    const contentSplit = content.split(" ");
+
+    if (contentSplit[0] !== "!scp") {
         return;
     }
-    scpMentions.forEach(scp => {
-        channel.send(`http://scpwiki.com/${scp}`);
-    });
+
+    if (parseInt(contentSplit[1], 10) === NaN) {
+        return;
+    }
+
+    let scp = contentSplit[1].padLeft(3, "0");
+
+    channel.send(`http://scpwiki.com/${scp}`);
 });
 
 try {
