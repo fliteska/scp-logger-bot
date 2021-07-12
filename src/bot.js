@@ -24,7 +24,7 @@ client.on("message", async ({ channel, content, author }) => {
 
     let scp = contentSplit[1].padLeft(3, "0");
 
-    channel.send(`http://scpwiki.com/${scp}`);
+    channel.send(`http://scpwiki.com/scp-${scp}`);
 });
 
 try {
