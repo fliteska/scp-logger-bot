@@ -20,16 +20,16 @@ client.on("message", async (msg) => {
         return;
     }
 
-    if (parseInt(contentSplit[1], 10) === NaN) {
+    const scpNum = parseInt(contentSplit[1], 10);
+
+    if (scpNum === NaN) {
         return;
     }
 
-    let scp = contentSplit[1];
-    console.log(scp);
-    if (parseInt(scp, 10) < 100) {
-        scp.padLeft(3, "0");
+    if (scpNum < 100) {
+        scpNum.padLeft(3, "0");
     } else {
-        scp.padLeft(4, "0");
+        scpNum.padLeft(4, "0");
     }
 
     msg.delete();
