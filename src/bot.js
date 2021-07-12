@@ -27,9 +27,9 @@ client.on("message", async (msg) => {
     }
 
     if (scpNum < 100) {
-        scpNum.padLeft(3, "0");
+        scpNum.toString().padLeft(3, "0");
     } else {
-        scpNum.padLeft(4, "0");
+        scpNum.toString().padLeft(4, "0");
     }
 
     msg.delete();
