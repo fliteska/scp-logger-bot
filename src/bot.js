@@ -24,8 +24,8 @@ client.on("message", async (msg) => {
         return;
     }
 
-    let scp = parseInt(contentSplit[1], 10);
-    if (scp < 100) {
+    let scp = contentSplit[1];
+    if (parseInt(scp, 10) < 100) {
         scp.padLeft(3, "0");
     } else {
         scp.padLeft(4, "0");
