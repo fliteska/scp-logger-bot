@@ -7,7 +7,9 @@ client.on("ready", () => {
     console.log(`${client.user.tag} is up and running.`);
 });
 
-client.on("message", async ({ channel, content, author }) => {
+client.on("message", async (msg) => {
+    const { channel, content, author } = msg;
+    console.log(msg);
     if (author.username === "SCP Logger") {
         return;
     }
@@ -22,7 +24,12 @@ client.on("message", async ({ channel, content, author }) => {
         return;
     }
 
-    let scp = contentSplit[1].padLeft(3, "0");
+    let scp = contentSplit[1]
+    if (scp < 100) {
+        scp.padLeft(3, "0");
+    } else {
+        scp.padLeft(4, "0");
+    }
 
     channel.send(`http://scpwiki.com/scp-${scp}`);
 });
