@@ -8,8 +8,8 @@ client.on("ready", () => {
 });
 
 client.on("message", async (msg) => {
-    const { channel, content, author } = msg;
-    console.log(msg);
+    const { channel, content, author, lastMessageID } = msg;
+
     if (author.username === "SCP Logger") {
         return;
     }
@@ -25,12 +25,14 @@ client.on("message", async (msg) => {
     }
 
     let scp = contentSplit[1];
+    console.log(scp);
     if (parseInt(scp, 10) < 100) {
         scp.padLeft(3, "0");
     } else {
         scp.padLeft(4, "0");
     }
 
+    msg.delete();
     channel.send(`http://scpwiki.com/scp-${scp}`);
 });
 
