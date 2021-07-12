@@ -21,7 +21,9 @@ client.on("ready", () => {
 });
 
 client.on("message", async ({ channel, content, author }) => {
-    console.log(author);
+    if (author.username === "SCP Logger") {
+        return;
+    }
     const scpMentions = scpRegexMatches(content);
     if (scpMentions.length === 0) {
         return;
