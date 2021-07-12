@@ -20,7 +20,8 @@ client.on("ready", () => {
     console.log(`${client.user.tag} is up and running.`);
 });
 
-client.on("message", async ({ channel, content }) => {
+client.on("message", async ({ channel, content, author }) => {
+    console.log(author);
     const scpMentions = scpRegexMatches(content);
     if (scpMentions.length === 0) {
         return;
