@@ -29,7 +29,7 @@ client.on("message", async ({ channel, content, author }) => {
         return;
     }
     scpMentions.forEach(scp => {
-        channel.send(`https://scpwiki.com/${scp}`);
+        channel.send(`http://scpwiki.com/${scp}`);
     });
 });
 
