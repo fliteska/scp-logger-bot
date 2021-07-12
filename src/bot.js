@@ -31,7 +31,7 @@ client.on("message", async (msg) => {
         scp = scp.padStart(3, "0");
     }
 
-    channel.send(`http://scpwiki.com/scp-${scp}`);
+    channel.send(`@${author.username}#${author.discriminator}, (Check out SCP-${scp})[http://scpwiki.com/scp-${scp}]`);
 });
 
 try {
